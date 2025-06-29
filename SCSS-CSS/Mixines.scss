@@ -1,0 +1,136 @@
+@mixin vertical-line($hight) {
+    background-color: $line-color;
+    width: 1px;
+    height:$hight;
+}
+@mixin text-style($size){
+    color: $text-color;
+    font-size: $size;
+    line-height: 150%;
+    font-family: $iner-font;
+    font-weight: 200;
+    font-style: normal;
+}
+@mixin text-bold-style($size){
+    font-family: $montsserat-font;
+    font-style: normal;
+    font-weight: 600;
+    font-size: $size;
+    line-height: 94.4%;
+    color: $bold-text-color;
+}
+@mixin  button($size,$padding) {
+    text-decoration: none;
+    width: fit-content;
+    font-family: $iner-font;
+    font-size: $size;
+    color: white;
+    font-weight: 500;
+    line-height: 150%;
+    font-style: normal;
+    background-color: $green-color;
+    border-radius: 5px;
+    padding: $padding;
+    outline-style: solid;
+    border: none;
+    outline-color: $line-color;
+    outline-offset: 3px;
+    outline-width: 1px;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+    border: solid 1px $green-color;
+    &:hover{
+        outline-color: $green-color;
+        border: solid 1px $block-color
+        ;
+        background-color: rgb(0, 0, 0, 0);
+        color: $green-color;
+
+    }
+}
+@mixin dubletext($size1,$size2,$motionX,$motionY){
+    p:nth-child(1){
+        position: absolute;
+        z-index: 1;
+        font-family:$iner-font;
+        font-style: normal;
+        font-weight: 800;
+        font-size: $size1;
+        line-height: 75%;
+        text-align: center;
+        opacity: 0.16;
+        color: $block-color;
+        margin: 0;
+        transform: translateX($motionX);
+        &::selection{
+            background-color: ADC7C9;
+        }
+    }
+    p:nth-child(2){
+        margin: 0;
+        position: absolute;
+        z-index: 0;
+        font-family: $iner-font;
+        font-style: normal;
+        font-weight: 800;
+        font-size: $size2;
+        line-height: 72.9%;
+        text-align: center;
+        color: white;
+        transform: translateY($motionY);
+        text-shadow: 
+        -1px -1px 0px $green-color,
+         0px -1px 0px $green-color,
+         1px -1px 0px $green-color,
+        -1px  0px 0px $green-color,
+         1px  0px 0px $green-color,
+        -1px  1px 0px $green-color,
+         0px  1px 0px $green-color,
+         1px  1px 0px $green-color;
+         &::selection{
+            background-color: ADC7C9;
+        }
+    }
+}
+@mixin orizontal-line($width) {
+    background-color: $line-color;
+    width: $width;
+    height: 1px;
+}
+$breakpoints: (
+    "xs" : 500px,
+    "sm" : 700px,
+    "md" : 1000px,
+    "lg" : 1500px,
+    "xl" : 1920px,
+);
+@mixin xs {
+    @media (max-width:map-get($breakpoints, "xs")) {
+        @content;
+    }  
+}
+@mixin sm {
+    @media (max-width:map-get($breakpoints, "sm")) {
+        @content;
+    }  
+}
+@mixin md {
+    @media (max-width:map-get($breakpoints, "md")) {
+        @content;
+    }  
+}
+@mixin lg {
+    @media (max-width:map-get($breakpoints, "lg")) {
+        @content;
+    }  
+}
+@mixin xl {
+    @media (max-width:map-get($breakpoints, "xl")) {
+        @content;
+    }  
+}
+@mixin xs {
+    @media (max-width:map-get($breakpoints, "xs")) {
+        @content;
+    }  
+}

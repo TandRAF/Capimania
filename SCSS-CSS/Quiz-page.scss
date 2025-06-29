@@ -1,0 +1,706 @@
+@import "Variables";
+@import "Mixines";
+@import "KeyFrame";
+
+body {
+    background: $backround-color;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100vh;
+    overflow-y: hidden;
+    @include sm {
+        overflow-y: visible;
+    }
+}
+main{
+    header{
+
+    }
+}
+main{
+    
+}
+main header{
+
+}
+
+main {
+    margin: 0 max(5.2083vw, 50px);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    @include md {
+        margin: 0 max(3.33vw, 10px);
+    }
+    @include sm {
+        justify-content: center;
+        grid-template-columns: auto;
+    }
+    header {
+        width: 350px;
+        margin: 50px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @include lg {
+            width: 300px;
+        }
+        @include md {
+            width: fit-content;
+        }
+        @include sm {
+            display: flex;
+            gap: 20px;
+            margin: 40px 0 0 10px;
+        }
+        .nav-block {
+            display: flex;
+            height: auto;
+            gap: 20px;
+            align-items: center;
+            @include sm {
+                gap: 10px;
+            }
+            .vertical-line {
+                @include vertical-line(90px);
+                @include lg {
+                    @include vertical-line(60px);
+                }
+            }
+            .burger-block {
+                padding: 6px;
+                width: 50px;
+                height: 50px;
+                display: none;
+                flex-direction: column;
+                justify-content: space-around;
+                overflow: hidden;
+                cursor: pointer;
+                @include md {
+                    display: flex;
+                }
+                .line {
+                    height: 1px;
+                    background-color: $line-color;
+                    transition: all 0.5s ease-out;
+                }
+                .line:nth-child(1) {
+                    width: 25px;
+                    transition: all 0.5s ease-out;
+                    &.active {
+                        z-index: 5;
+                        position: absolute;
+                        width: 45px;
+                        margin: 2.5px;
+                        transform: rotate(-45deg);
+                        background-color: white;
+                    }
+                }
+                .line:nth-child(2) {
+                    width: 40px;
+                    &.active {
+                        width: 0;
+                    }
+                }
+                .line:nth-child(3) {
+                    width: 50px;
+                    &.active {
+                        z-index: 5;
+                        position: absolute;
+                        width: 50px;
+                        width: 45px;
+                        margin: 2.5px;
+                        transform: rotate(45deg);
+                        background-color: $green-color;
+                    }
+                }
+                .circle {
+                    transition: all 0.5s ease-out;
+                    margin: -20px 0 0 40px;
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: $green-color;
+                    &.active {
+                        position: absolute;
+                        margin: 0;
+                        width: 50px;
+                        border-radius: 5px;
+                        height: 50px;
+                        background-color: $block-color;
+                    }
+                }
+            }
+            nav {
+                display: flex;
+                background: $block-color;
+                border-radius: 5px;
+                padding: 6px;
+                width: 200px;
+                margin: 0;
+                height: 42px;
+                transition: all 0.5s ease-out;
+                @include lg {
+                    position: absolute;
+                    margin-left: 20px;
+                }
+                @include md {
+                    position: absolute;
+                    margin-left: 100px;
+                    opacity: 0;
+                    z-index: 0;
+                    transform: translateX(-15px);
+                }
+                @include sm {
+                    margin-left: 80px;
+                }
+                &.active {
+                    transform: translateX(0);
+                    opacity: 1;
+                    z-index: 10;
+                }
+                ul {
+                    z-index: 10;
+                    padding: 0;
+                    width: 200px;
+                    margin: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    li {
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+                        a {
+                            width: 42px;
+                            height: 42px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+                div {
+                    width: 42px;
+                    height: 42px;
+                    background: $green-color;
+                    border-radius: 5px;
+                    position: absolute;
+                    z-index: 0;
+                    transform: translateX(0);
+                }
+            }
+        }
+        .header-img {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            .vertical-line {
+                @include vertical-line(260px);
+            }
+            .image-block {
+                width: 210px;
+                height: 210px;
+                background: url(../Images/meniu-capi-icon.svg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        }
+        p {
+            @include text-style(15px);
+            padding: 0;
+            margin: 0;
+        }
+        .pass-question-block {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            .vertical-line {
+                @include vertical-line(40px);
+            }
+            .pass-question-level {
+                height: 30px;
+                width: 0;
+                border-radius: 5px;
+                background-color: $green-color;
+                transition: all 0.5s ease-out;
+            }
+            span {
+                @include text-style(15px);
+            }
+        }
+        .remain-question-block {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            align-items: center;
+            .vertical-line {
+                @include vertical-line(40px);
+            }
+            .remain-question-level {
+                height: 30px;
+                width: 0;
+                border-radius: 5px;
+                background-color: $bold-text-color;
+                transition: all 0.5s ease-out;
+            }
+            span {
+                @include text-style(15px);
+            }
+        }
+    }
+    .main-quiz {
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        height: 100vh;
+        padding: 0 5px;
+        @include sm {
+            overflow-y: hidden;
+            margin-top: 50px;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            transform: translateX(-20px);
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            transform: translateY(90vh) translateX(-20px);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+        }
+        .all-quiz-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            transition: all 0.5s ease-out;
+            .quiz-block {
+                opacity: 0.3;
+                width: 440px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 30px 20px;
+                align-items: center;
+                transition: all 0.5s ease-out;
+                @include lg {
+                    width: max(29.33vw, 350px);
+                }
+                @include xs {
+                    width: max(70vw, 250px);
+                }
+                &.active {
+                    opacity: 1;
+                }
+                .quiz-question {
+                    @include text-bold-style(40px);
+                    @include md {
+                        @include text-bold-style(35px);
+                    }
+                    @include sm {
+                        @include text-bold-style(30px);
+                    }
+                    @include xs {
+                        @include text-bold-style(25px);
+                    }
+
+                    text-align: center;
+                }
+                .orizontal-line {
+                    @include orizontal-line(220px);
+                }
+                .quiz-variant {
+                    width: 100%;
+                    padding: 20px;
+                    border-radius: 5px;
+                    border: 1px solid $line-color;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    transition: all 0.5s ease-out;
+                    align-items: center;
+                    gap: 5px;
+                    cursor: pointer;
+                    &.active {
+                        border: 1px solid $green-color;
+                    }
+                    &.active .quiz-variant-text {
+                        color: $green-color;
+                    }
+                    &.active .quiz-variant-circel {
+                        background-color: $green-color;
+                    }
+                    &:hover {
+                        border: 1px solid $green-color;
+                    }
+                    &:hover .quiz-variant-text {
+                        color: $green-color;
+                    }
+                    &:hover .quiz-variant-circel {
+                        background-color: $green-color;
+                    }
+                    .quiz-variant-text {
+                        @include text-style(16px);
+                        margin: 0;
+                        width: fit-content;
+                        transition: all 0.5s ease-out;
+                        @include md {
+                            @include text-style(14px);
+                        }
+                        @include sm {
+                            @include text-style(12px);
+                        }
+                    }
+                    .quiz-variant-circel {
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        outline-style: solid;
+                        outline-color: $line-color;
+                        outline-offset: 3px;
+                        outline-width: 1px;
+                        flex-shrink: 0;
+                        transition: all 0.5s ease-out;
+                        background-color: rgba(0, 0, 0, 0);
+                    }
+                }
+            }
+        }
+        .arrow-buttons {
+            transform: translateY(25vh);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .vertical-line:nth-child(1) {
+                z-index: 100;
+                @include vertical-line(100px);
+                width: 1px;
+                background-color: $green-color;
+                cursor: pointer;
+                span {
+                    @include text-style(16px);
+                    color: $green-color;
+                    position: absolute;
+                    z-index: 100;
+                    width: max-content;
+                    left: -40px;
+                    top: 30px;
+                    padding: 5px;
+                    transform: rotate(90deg);
+                }
+                &::after {
+                    margin-top: 0;
+                    position: absolute;
+                    margin-left: -1px;
+                    content: "";
+                    transform: rotate(45deg);
+                    width: 7px;
+                    height: 1px;
+                    background-color: $green-color;
+                }
+                &::before {
+                    margin-top: 0;
+                    margin-left: -5px;
+                    position: absolute;
+                    content: "";
+                    transform: rotate(-45deg);
+                    width: 7px;
+                    height: 1px;
+                    background-color: $green-color;
+                }
+            }
+            .vertical-line:nth-child(2) {
+                z-index: 100;
+                @include vertical-line(120px);
+                cursor: pointer;
+                span {
+                    @include text-style(16px);
+                    position: absolute;
+                    z-index: 100;
+                    width: max-content;
+                    left: -40px;
+                    top: 160px;
+                    padding: 5px;
+                    transform: rotate(90deg);
+                }
+                &::after {
+                    margin-top: 119px;
+                    position: absolute;
+                    margin-left: -1px;
+                    content: "";
+                    transform: rotate(-45deg);
+                    width: 7px;
+                    height: 1px;
+                    background-color: $line-color;
+                }
+                &::before {
+                    margin-top: 119px;
+                    margin-left: -5px;
+                    position: absolute;
+                    content: "";
+                    transform: rotate(45deg);
+                    width: 7px;
+                    height: 1px;
+                    background-color: $line-color;
+                }
+            }
+        }
+    }
+    .motion-figure {
+        width: 400px;
+        height: 100vh;
+        @include lg {
+            width: max(26.66vw, 300px);
+        }
+        @include md {
+            display: none;
+        }
+        .figure-images {
+            position: absolute;
+            z-index: -1;
+            background-image: url(../Images/figure-image-motion.png);
+            width: 945px;
+            height: 913px;
+            transform: rotate(0deg);
+            transition: all 0.5s ease-out;
+            @include lg {
+                width: 945px;
+                height: 913px;
+            }
+        }
+    }
+}
+.modal-block {
+    width: 100%;
+    height: 102vh;
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    .modal-meniu {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        @include md {
+            gap: 10px;
+        }
+        @include sm {
+            flex-direction: column;
+        }
+        .capi-img-block {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            background: #ffffff;
+            border: 1px solid $line-color;
+            border-radius: 5px;
+            background-image: url(../Images/modal-backround.png);
+            background-size: 130%;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: fit-content;
+            @include md {
+                padding: max(2vw, 10px);
+            }
+            .img-block {
+                width: 470px;
+                height: 470px;
+                @include lg {
+                    width: max(31, 3vw, 400px);
+                    hight: max(31, 3vw, 400px);
+                }
+                @include md {
+                    width: max(40vw, 300px);
+                    height: max(40vw, 450px);
+                }
+                @include sm {
+                    width: max(50vw, 250px);
+                    height: max(50vw, 250px);
+                }
+            }
+            .orizontal-line {
+                @include orizontal-line(400px);
+                @include md {
+                    @include orizontal-line(300px);
+                }
+            }
+        }
+        .capi-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            @include md {
+                gap: 10px;
+            }
+            .capi-name-points {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+                align-items: center;
+                .capi-name {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+                    background: #ffffff;
+                    border: 1px solid $line-color;
+                    border-radius: 5px;
+                    padding: 20px;
+                    p {
+                        margin: 0;
+                        @include text-bold-style(34px);
+                        font-weight: 800;
+                        @include lg {
+                            @include text-bold-style(max(2.26vw, 30px));
+                            font-weight: 800;
+                        }
+                        @include md {
+                            @include text-bold-style(max(3vw, 20px));
+                            font-weight: 800;
+                        }
+                        @include sm {
+                            @include text-bold-style(max(4vw, 18px));
+                            font-weight: 800;
+                        }
+                    }
+                    .orizontal-line {
+                        @include orizontal-line(280px);
+                        @include md {
+                            @include orizontal-line(180px);
+                        }
+                        @include sm {
+                            @include orizontal-line(150px);
+                        }
+                    }
+                }
+                .capi-points {
+                    background-image: url(../Images/img-ponts.svg);
+                    background-size: cover;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-shrink: 0;
+                    width: 140px;
+                    height: 140px;
+                    p {
+                        @include text-bold-style(26px);
+                        font-weight: 800;
+                        color: white;
+                    }
+                    @include lg {
+                        width: max(9.33vw, 110px);
+                        height: max(9.33vw, 110px);
+                        color: white;
+                    }
+                    @include md {
+                        width: max(11vw, 90px);
+                        height: max(11vw, 90px);
+                        color: white;
+                    }
+                    @include sm {
+                        width: max(17vw, 90px);
+                        height: max(17vw, 90px);
+                    }
+                }
+            }
+            .capi-info-more {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                background: #ffffff;
+                border: 1px solid $line-color;
+                border-radius: 5px;
+                padding: 20px;
+                @include md {
+                    padding: max(2vw, 10px);
+                }
+                span:nth-child(1) {
+                    display: flex;
+                    gap: 20px;
+                    align-items: center;
+                    span {
+                        flex-direction: column;
+                        display: flex;
+                        gap: 0;
+                    }
+                    @include md {
+                        width: fit-content;
+                    }
+                    p:nth-child(1) {
+                        display: flex;
+                        flex-direction: column;
+                        margin: 0;
+                        width: 470px;
+                        height: 190px;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        @include text-style(18px);
+                        @include lg {
+                            width: max(31, 3vw, 400px);
+                        }
+                        @include md {
+                            width: max(40vw, 250px);
+                            @include text-style(max(1.8vw, 14px));
+                        }
+                        @include sm {
+                            width: max(50vw, 250px);
+                        }
+                    }
+                    p:nth-child(2) {
+                        width: 470px;
+                        margin: 0;
+                        height: 0;
+                        @include text-style(24px);
+                        line-height: 20%;
+                        @include lg {
+                            width: max(31, 3vw, 400px);
+                        }
+                        @include md {
+                            width: max(40vw, 300px);
+                        }
+                        @include sm {
+                            width: max(50vw, 250px);
+                        }
+                    }
+                    .vertical-line {
+                        @include vertical-line(234px);
+                    }
+                }
+                span:nth-child(2) {
+                    display: flex;
+                    gap: 20px;
+                    align-items: center;
+                    .vertical-line {
+                        @include vertical-line(90px);
+                    }
+                    a {
+                        @include button(18px, 15px 80px);
+                        height: fit-content;
+                        @include md {
+                            @include button(18px, 10px 60px);
+                        }
+                        @include sm {
+                            @include button(15px, 10px 40px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

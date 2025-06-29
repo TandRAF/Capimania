@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../SCSS-CSS/Quiz-page.css">
+    <script>
+        window.history.replaceState(null, null, '?index=1');
+    </script>
+    <script src="../JS/Quiz-data.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Capimania</title>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="nav-block">
+                <div class="vertical-line"></div>
+                <div class="burger-block">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="circle"></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a class="link" href="../Index.html"><img src="../Images/Home.svg"></a></li>
+                        <li><a class="link" href="../Pages/Quiz-page.html"><img src="../Images/quiz.svg"></a></li>
+                        <li><a class="link" href="#"><img src="../Images/colection.svg"></a></li>
+                        <li><a class="link" href="#"><img src="../Images/Profile.svg"></a></li>
+                    </ul>
+                    <div id="muve-block"></div>
+                </nav>
+            </div>
+            <div class="header-img">
+                <div class="vertical-line"></div>
+                <div class="image-block"></div>
+            </div>
+            <p>passed question</p>
+            <div class="pass-question-block">
+                <div class="vertical-line"></div>
+                <div class="pass-question-level"></div>
+                <span class="pass-question-number">0</span>
+            </div>
+            <p>Ramained Questions</p>
+            <div class="remain-question-block">
+                <div class="vertical-line"></div>
+                <div class="remain-question-level"></div>
+                <span class="remain-question-number">0</span>
+            </div>
+        </header>
+        <section class="main-quiz">
+            <div class="all-quiz-blocks">
+            </div>
+            <div class="arrow-buttons">
+                <div id="preBtn" class="vertical-line"><span>prev-question</span></div>
+                <div id="nextBtn"class="vertical-line"><span>next-question</span></div>
+            </div>
+        </section>
+        <section class="motion-figure">
+            <div class="figure-images">
+            </div>
+        </section>
+    </main>
+    <section class="modal-block">
+        <div class="modal-meniu">
+            <div class="capi-img-block">
+                <div class="img-block"></div>
+                <div class="orizontal-line"></div>
+            </div>
+            <div class="capi-info">
+                <div class="capi-name-points">
+                    <div class="capi-name">
+                        <p> CAPIBARA <br> PROGRAMIST!</p>
+                        <div class="orizontal-line"></div>
+                    </div>
+                    <div class="capi-points">
+                        <p>25p</p>
+                    </div>
+                </div>
+                <div class="capi-info-more">
+                    <span>
+                        <div class="vertical-line"></div>
+                        <span>
+                            <p>
+                            Un capibara emotiv este un extrovert. Își exprimă opiniile direct, fără a lua în considerare sentimentele celorlalți. În ceea ce privește rezolvarea sarcinilor, colericii nu își vor face planuri. Stilul lor de lucru nu este unul metodic, organizat, ci mai degrabă unul spontan și haotic.
+                            Colericii sunt egocentrici, ei urăsc să recunoască că au defecte și întotdeauna vor să aibă dreptate.
+                            Acești oameni rareori manifestă frică, chiar dacă limbajul corpului lor transmite mesajul opus.
+                        </p>
+                            <p>...</p>
+                    </span>
+                    </span>
+                    <span>
+                        <div class="vertical-line"></div>
+                        <a href="">More information</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="../JS/quiz.js"></script>
+    <script src="../JS/app.js"></script>
+</body>
+</html>

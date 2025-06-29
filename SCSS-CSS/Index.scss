@@ -1,0 +1,558 @@
+@import "Variables";
+@import "Mixines";
+
+body {
+    background: $backround-color;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+main {
+    margin: 50px max(5.2083vw, 50px);
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    @include md {
+        margin: 50px max(3.33vw, 10px);
+    }
+    @include sm {
+        justify-content: center;
+        grid-template-columns: auto;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @include sm {
+            position: absolute;
+        }
+        .nav-block {
+            display: flex;
+            height: auto;
+            gap: 20px;
+            align-items: center;
+            @include sm {
+                gap: 10px;
+            }
+            .vertical-line {
+                @include vertical-line(90px);
+                @include lg {
+                    @include vertical-line(60px);
+                }
+            }
+            .burger-block {
+                padding: 6px;
+                width: 50px;
+                height: 50px;
+                display: none;
+                flex-direction: column;
+                justify-content: space-around;
+                overflow: hidden;
+                cursor: pointer;
+                @include md {
+                    display: flex;
+                }
+                .line {
+                    height: 1px;
+                    background-color: $line-color;
+                    transition: all 0.5s ease-out;
+                }
+                .line:nth-child(1) {
+                    width: 25px;
+                    transition: all 0.5s ease-out;
+                    &.active {
+                        z-index: 5;
+                        position: absolute;
+                        width: 45px;
+                        margin: 2.5px;
+                        transform: rotate(-45deg);
+                        background-color: white;
+                    }
+                }
+                .line:nth-child(2) {
+                    width: 40px;
+                    &.active {
+                        width: 0;
+                    }
+                }
+                .line:nth-child(3) {
+                    width: 50px;
+                    &.active {
+                        z-index: 5;
+                        position: absolute;
+                        width: 50px;
+                        width: 45px;
+                        margin: 2.5px;
+                        transform: rotate(45deg);
+                        background-color: $green-color;
+                    }
+                }
+                .circle {
+                    transition: all 0.5s ease-out;
+                    margin: -20px 0 0 40px;
+                    position: absolute;
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 50%;
+                    background-color: $green-color;
+                    &.active {
+                        position: absolute;
+                        margin: 0;
+                        width: 50px;
+                        border-radius: 5px;
+                        height: 50px;
+                        background-color: $block-color;
+                    }
+                }
+            }
+            nav {
+                display: flex;
+                background: $block-color;
+                border-radius: 5px;
+                padding: 6px;
+                width: 200px;
+                margin: 0;
+                height: 42px;
+                transition: all 0.5s ease-out;
+                @include lg {
+                    position: absolute;
+                    margin-left: 20px;
+                }
+                @include md {
+                    position: absolute;
+                    margin-left: 100px;
+                    opacity: 0;
+                    z-index: 0;
+                    transform: translateX(-15px);
+                }
+                @include sm {
+                    margin-left: 80px;
+                }
+                &.active {
+                    transform: translateX(0);
+                    opacity: 1;
+                    z-index: 10;
+                }
+                ul {
+                    z-index: 10;
+                    padding: 0;
+                    width: 200px;
+                    margin: 0;
+                    display: flex;
+                    justify-content: space-between;
+                    li {
+                        list-style: none;
+                        margin: 0;
+                        padding: 0;
+                        a {
+                            width: 42px;
+                            height: 42px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+                }
+                div {
+                    width: 42px;
+                    height: 42px;
+                    background: $green-color;
+                    border-radius: 5px;
+                    position: absolute;
+                    z-index: 0;
+                    transform: translateX(0);
+                }
+            }
+        }
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            @include sm {
+                display: none;
+            }
+            .header-info {
+                align-items: center;
+                display: flex;
+                gap: 20px;
+                .vertical-line {
+                    @include vertical-line(140px);
+                }
+                p {
+                    width: 195px;
+                    @include text-style(16px);
+                    @include lg {
+                        @include text-style(max(1vw, 14px));
+                        width: max(10.15vw, 150px);
+                    }
+                }
+            }
+            button {
+                @include button(16px, 7px 36px);
+            }
+            .arrow {
+                @include vertical-line(100px);
+                &::after {
+                    margin-top: 97px;
+                    position: absolute;
+                    margin-left: -1px;
+                    content: "";
+                    transform: rotate(-45deg);
+                    width: 7px;
+                    height: 1px;
+                    background-color: $line-color;
+                }
+                &::before {
+                    margin-top: 97px;
+                    margin-left: -5px;
+                    position: absolute;
+                    content: "";
+                    transform: rotate(45deg);
+                    width: 7px;
+                    height: 1px;
+                    background-color: $line-color;
+                }
+            }
+        }
+    }
+    .main-image-duble-text {
+        margin-top: 100px;
+        width: max(48.3333vw, 900px);
+        height: 549px;
+        @include dubletext(215px, 157px, 50px, 100px);
+        @include lg {
+            width: max(45vw, 580px);
+            height: max(34.7vw, 445px);
+            @include dubletext(max(10.5vw, 150px), max(9vw, 110px), 70px, 100px);
+        }
+        @include md {
+            width: max(30vw, 270px);
+            height: max(51.5vw, 465px);
+            @include dubletext(max(10.5vw, 85px), max(6.5vw, 55px), 0, 60px);
+        }
+        @include sm {
+            @include dubletext(max(16.5vw, 80px), max(10.5vw, 50px), 0, 60px);
+            width: max(55vw, 270px);
+            height: max(100vw, 500px);
+        }
+        .image-block {
+            background-image: url(../Images/capimania-img.svg);
+            background-size: cover;
+            position: absolute;
+            width: max(48.3333vw, 900px);
+            height: 549px;
+            z-index: 3;
+            margin-top: 160px;
+            pointer-events: none;
+            @include lg {
+                background-image: url(../Images/capimania-img-lg.svg);
+                width: max(45vw, 580px);
+                height: max(34.7vw, 445px);
+            }
+            @include md {
+                margin-top: 100px;
+                width: max(30vw, 270px);
+                height: max(51.5vw, 465px);
+                background-image: url(../Images/capimania-img-md.svg);
+            }
+            @include sm{
+                width: max(52.4vw, 270px);
+                height: max(90vw, 465px);
+            }
+        }
+    }
+    .main-social-media-block {
+        margin: 250px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 20px;
+        @include md {
+            margin: 0;
+        }
+        @include sm {
+            display: none;
+        }
+        .social-media {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transform: translateX(15px);
+            a {
+                fill: $icon-color;
+                transition: all 0.5s ease-out;
+                &:hover {
+                    fill: $green-color;
+                }
+            }
+            .vertical-line {
+                @include vertical-line(18px);
+            }
+        }
+        .social-media-info {
+            display: flex;
+            gap: 20px;
+            p {
+                width: max(12vw, 170px);
+                @include text-style(16px);
+                text-align: right;
+                align-items: center;
+                @include lg {
+                    width: max(12vw, 130px);
+                    @include text-style(max(1vw, 14px));
+                }
+            }
+            .vertical-line {
+                @include vertical-line(195px);
+            }
+        }
+    }
+}
+.main-information {
+    height: 100vh;
+    padding: 90px max(5.2083vw, 50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: url(../Images/pg2-backround.png);
+    background-position: right;
+    background-size: 45%;
+    background-repeat: no-repeat;
+    @include lg {
+        background-size: 50%;
+    }
+    @include md {
+        flex-direction: column;
+        justify-content: center;
+        background-position: bottom right;
+        gap: 100px;
+        background-size: max(60vw, 400px);
+    }
+    .text-article-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        @include md{
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+        .article-duble-text {
+            @include dubletext(100px, 100px, 10px, 40px);
+            height: 168px;
+            width: 600px;
+            @include lg {
+                @include dubletext(max(6.4vw, 70px), max(6.36vw, 70px), 10px, 40px);
+                height: max(9vw, 120px);
+                width: max(35vw, 420px);
+            }
+            @include sm{
+                @include dubletext(max(11vw, 50px), max(11vw, 50px), 10px, 5vw);
+                height: max(17.4vw, 80px);
+                width: max(67vw, 300px);
+            }
+        }
+        .wiki-link {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            .orizontal-line {
+                @include orizontal-line(110px);
+                @include sm{
+                    @include orizontal-line(max(15vw, 80px));
+                }
+            }
+            a {
+                svg {
+                    stroke: $line-color;
+                    width: 36px;
+                    height: 36px;
+                    @include lg {
+                        width: max(2.4vw, 30px);
+                        height: max(2.4vw, 30px);
+                    }
+                }
+            }
+        }
+        article {
+            display: flex;
+            gap: 20px;
+            width: 600px;
+            align-items: center;
+            height: fit-content;
+            @include lg {
+                width: max(40vw, 400px);
+            }
+            @include md {
+                width: max(60vw, 400px);
+                text-align: center;
+            }
+            @include sm{
+                width: max(80vw, 200px);
+            }
+            .vertical-line {
+                @include vertical-line(162px);
+                @include md{
+                    display: none;
+                }
+            }
+            p {
+                margin: 0;
+                @include text-style(18px);
+                @include lg{
+                    @include text-style(max(1.2vw, 14px));
+                    @include text-style(max(1.2vw, 14px))
+                }
+            }
+        }
+    }
+    .main-information-img {
+        .image-block {
+            width: 492px;
+            height: 470px;
+            background-image: url(../Images/Capibara\ cosmic\ .png);
+            background-size: cover;
+            transform: translateX(-200px);
+            pointer-events: none;
+            animation: capymontion 2s infinite alternate ease-in-out;
+            @include lg {
+                width: max(32.8vw, 353px);
+                height: max(31.3vw, 337px);
+            }
+            @include sm{
+                width: max(30vw, 300px);
+                height: max(29vw, 270px);
+            }
+        }
+    }
+}
+@keyframes capymontion {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(30px);
+    }
+}
+.main-quiz-enter {
+    background-image: url(../Images/pg3-backround.png);
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    @include sm{
+        margin-top: 100px;
+        background-size: 300%;
+    }
+    .main-quiz {
+        transform: translateY(0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .duble-text {
+            transform: translateY(-500px);
+            @include dubletext(190px, 190px, 50px, 100px);
+            width: 1100px;
+            @include lg{
+                width: 1100px;
+                width: max(73vw, 900px);
+                @include dubletext( max(12.6vw, 150px),max(12.6vw, 150px), 50px, 100px);
+            }
+            @include md{
+                @include dubletext(max(12vw, 80px),max(12vw, 80px), 20px, 50px);
+                width: max(70vw, 450px);
+            }
+            @include sm{
+                margin-top: 100px;
+                @include dubletext(max(12vw, 50px),max(12vw, 50px), 20px, 50px);
+                width: max(70vw, 300px);
+            }
+        }
+        .quiz {
+            background: $backround-color;
+            border: 1px solid $line-color;
+            border-radius: 5px;
+            padding: 70px 50px 50px 50px;
+            width: fit-content;
+            .quiz-meniu {
+                z-index: 4;
+                position: absolute;
+                background: $backround-color;
+                border: 1px solid $line-color;
+                border-radius: 5px;
+                padding: 40px 30px 30px 30px;
+                transform: translateY(-240px);
+                @include sm{
+                    padding: 30px 20px 20px 30px;
+                }
+                @include lg{
+                    transform: translateY(-220px);
+                }
+                @include md{
+                    transform: translateY(-200px);
+                }
+                @include sm{
+                    transform: translateY(-170px);
+                }
+                p {
+                    @include text-bold-style(45px);
+                    @include lg{
+                        @include text-bold-style(max(3vw, 35px));
+                    }
+                    @include sm{
+                        @include text-bold-style(max(5vw, 22px));
+                    }
+                }
+                .orizontal-line {
+                    @include orizontal-line(100%);
+                }
+                .img-block {
+                    z-index: 4;
+                    transform: translateX(40px) translateY(-160px);
+                    background-image: url(../Images/meniu-capi-icon.svg);
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    width: 200px;
+                    height: 200px;
+                    @include lg{
+                        width: max(13.3vw, 180px);
+                        height: max(13.3vw, 180px);
+                        transform: translateX(max(2.6vw, 20px)) translateY(-160px);
+                    }
+                    @include sm{
+                        transform: translateX(max(1vw, 0px)) translateY(-26vw);
+                        width: max(30vw, 140px);
+                        height: max(30vw, 140px);
+                    }
+                    @include xs{
+                        transform: translateX(max(1vw, 0px)) translateY(-130px);
+                    }
+                }
+            }
+            button {
+                @include button(20px, 20px 130px);
+                @include lg{
+                    @include button(20px, max(1.3vw, 10px) max(8.6vw, 95px));
+                }
+                @include sm{
+                    @include button(max(2.8vw, 18px), max(1.3vw, 10px) max(13vw, 50px));
+                }
+            }
+        }
+    }
+}
